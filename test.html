@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Datatable</title>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $.fn.dataTableExt.errMode = 'ignore';
+	    $('#datatable_provinces').dataTable({
+	        "sServerMethod": "get", 
+	        "bProcessing": true,
+	        "bServerSide": true,
+	        "sAjaxSource": $('meta[name="route"]').attr('content') + '/administrator/fetchprovinces',
+	        "columnDefs": [
+	            { "className": "dt-center", "targets": [0, 6, 7] },
+				{ "className": "dt-right", "targets": [ 2, 3, 4, 5] }
+	        ],
+	        // Hide the loader when datatable is rendered
+	        "initComplete": function(settings, json) {
+	        	$('.loader-wrapper').hide();
+	        },
+	        "aoColumns": [
+	            { 'bSortable' : true, "width": "10%" },
+	            { 'bSortable' : true },
+	            { 'bSortable' : false },
+				{ 'bSortable' : false },
+				{ 'bSortable' : false },
+				{ 'bSortable' : false },
+				{ 'bSortable' : false },
+	            { 'bSortable' : false, "width": "10%" }
+	        ]
+	    });
+	});
+	</script>
+</head>
+<body>
+
+	<table id="datatable_provinces" class="table table-striped">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Col1</td>
+				<td>Col2</td>
+				<td>Col3</td>
+				<td>Col4</td>
+				<td>Col5</td>
+				<td>Col6</td>
+				<td>Col7</td>
+			</tr>
+		</thead>
+	</table>
+
+</body>
+</html>
